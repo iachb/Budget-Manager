@@ -1,12 +1,14 @@
-import { useState } from 'react'
+import { useState } from "react";
+import Header from "./components/Header";
+import NewBudget from "./components/NewBudget";
 
 function App() {
-
+  const [budget, setBudget] = useState(0);
   return (
     <>
-      <h1>Hello</h1>
+      <Header budget={budget} setBudget={setBudget} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
