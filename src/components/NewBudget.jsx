@@ -1,25 +1,35 @@
+import {useState} from 'react';
 import { budgetPropTypes } from "../utils/propTypes";
+import Message from './Message';
+
 const NewBudget = ({ budget, setBudget }) => {
 
+    const [message, setMessage] = useState('');
+
   const handleBudget = (e) => {
-    e.prevent.Default();
-    setBudget(parseInt(e.target.value, 10));
+    e.preventDefault();
+    if (!budget || budget < 1) {
+      setMessage("Budget is not valid");
+      return;
+    }
+    setMessage("");
   };
-  
+
   return (
     <div className="contenedor-presupuesto contenedor sombra">
-      <form className="formulario">
+      <form onSubmit={handleBudget} className="formulario">
         <div className="campo">
           <label>Define Budget</label>
           <input
             className="nuevo-presupuesto"
-            type="text"
+            type="number"
             placeholder="Input your budget"
             value={budget}
-            onChange={(e) => setBudget(parseInt(e.target.value, 10))}
+            onChange={(e) => setBudget(Number(e.target.value))}
           />
         </div>
-        <input type="submit" value="Add" onClick={handleBudget}/>
+        <input type="submit" value="Add" />
+        {message && <Message type="error">{message}</Message>}
       </form>
     </div>
   );
