@@ -1,6 +1,11 @@
-import React from "react";
+import { budgetPropTypes } from "../utils/propTypes";
+const NewBudget = ({ budget, setBudget }) => {
 
-const NewBudget = ({budget, setBudget}) => {
+  const handleBudget = (e) => {
+    e.prevent.Default();
+    setBudget(parseInt(e.target.value, 10));
+  };
+  
   return (
     <div className="contenedor-presupuesto contenedor sombra">
       <form className="formulario">
@@ -14,10 +19,12 @@ const NewBudget = ({budget, setBudget}) => {
             onChange={(e) => setBudget(parseInt(e.target.value, 10))}
           />
         </div>
-        <input type="submit" value="Add" />
+        <input type="submit" value="Add" onClick={handleBudget}/>
       </form>
     </div>
   );
 };
+
+NewBudget.propTypes = budgetPropTypes;
 
 export default NewBudget;

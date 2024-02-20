@@ -1,4 +1,4 @@
-import React from "react";
+import { budgetPropTypes } from "../utils/propTypes";
 import NewBudget from "./NewBudget";
 
 const Header = ({ budget, setBudget }) => {
@@ -9,5 +9,7 @@ const Header = ({ budget, setBudget }) => {
     </header>
   );
 };
+
+Header.propTypes = budgetPropTypes;
 
 export default Header;
