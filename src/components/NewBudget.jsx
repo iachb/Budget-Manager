@@ -1,10 +1,9 @@
-import {useState} from 'react';
+import { useState } from "react";
 import { budgetPropTypes } from "../utils/propTypes";
-import Message from './Message';
+import Message from "./Message";
 
-const NewBudget = ({ budget, setBudget }) => {
-
-    const [message, setMessage] = useState('');
+const NewBudget = ({ budget, setBudget, setIsValidBudget }) => {
+  const [message, setMessage] = useState("");
 
   const handleBudget = (e) => {
     e.preventDefault();
@@ -13,6 +12,7 @@ const NewBudget = ({ budget, setBudget }) => {
       return;
     }
     setMessage("");
+    setIsValidBudget(true);
   };
 
   return (
