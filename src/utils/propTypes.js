@@ -10,3 +10,7 @@ export const budgetPropTypes = {
 export const childrenPropTypes = {
   children: PropTypes.node.isRequired,
 };
+
+export const modalPropTypes = {
+  setModal: PropTypes.func.isRequired,
+};
