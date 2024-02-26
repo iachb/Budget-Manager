@@ -3,16 +3,29 @@ import Header from "./components/Header";
 import IconNewExpense from "./img/nuevo-gasto.svg";
 import Modal from "./components/Modal";
 
+import { generateId } from "./utils";
+
 function App() {
   const [budget, setBudget] = useState(0);
   const [isValidBudget, setIsValidBudget] = useState(false);
   const [modal, setModal] = useState(false);
   const [animateModal, setAnimateModal] = useState(false);
+  const [expenses, setExpenses] = useState([]);
 
   const handleNewExpense = () => {
     setModal(true);
     setTimeout(() => {
       setAnimateModal(true);
+    }, 500);
+  };
+
+  const saveExpense = (expense) => {
+    expense.id = generateId();
+    setExpenses([...expenses, expense]);
+
+    setAnimateModal(false);
+    setTimeout(() => {
+      setModal(false);
     }, 500);
   };
 
@@ -38,6 +51,7 @@ function App() {
           setModal={setModal}
           animateModal={animateModal}
           setAnimateModal={setAnimateModal}
+          saveExpense={saveExpense}
         />
       )}
     </>
