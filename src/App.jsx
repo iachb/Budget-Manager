@@ -7,10 +7,14 @@ function App() {
   const [budget, setBudget] = useState(0);
   const [isValidBudget, setIsValidBudget] = useState(false);
   const [modal, setModal] = useState(false);
+  const [animateModal, setAnimateModal] = useState(false);
 
   const handleNewExpense = () => {
     setModal(true);
-  }
+    setTimeout(() => {
+      setAnimateModal(true);
+    }, 500);
+  };
 
   return (
     <>
@@ -22,11 +26,19 @@ function App() {
       />
       {isValidBudget && (
         <div className="nuevo-gasto">
-          <img src={IconNewExpense} alt="New Expense" onClick={handleNewExpense}/>
+          <img
+            src={IconNewExpense}
+            alt="New Expense"
+            onClick={handleNewExpense}
+          />
         </div>
       )}
       {modal && (
-        <Modal setModal={setModal}/>
+        <Modal
+          setModal={setModal}
+          animateModal={animateModal}
+          setAnimateModal={setAnimateModal}
+        />
       )}
     </>
   );
