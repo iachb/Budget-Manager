@@ -14,3 +14,8 @@ export const childrenPropTypes = {
 export const modalPropTypes = {
   setModal: PropTypes.func.isRequired,
 };
+
+export const expensesPropTypes = {
+  expensesPropTypes: PropTypes.array.isRequired,
+  expenses: PropTypes.array.isRequired,
+};
