@@ -14,7 +14,8 @@ const Modal = ({
   const [quantity, setQuantity] = useState("");
   const [category, setCategory] = useState("");
   const [message, setMessage] = useState("");
-  const [id, setId] = useState('');
+  const [date, setDate] = useState("");
+  const [id, setId] = useState("");
 
   useEffect(() => {
     if (Object.keys(editExpense).length > 0) {
@@ -22,6 +23,7 @@ const Modal = ({
       setQuantity(editExpense.quantity);
       setCategory(editExpense.category);
       setId(editExpense.id);
+      setDate(editExpense.date);
     }
   }, []);
 
@@ -41,7 +43,7 @@ const Modal = ({
       }, 3000);
       return;
     }
-    saveExpense({ name, quantity, category, id });
+    saveExpense({ name, quantity, category, id, date });
   };
 
   return (
@@ -92,7 +94,10 @@ const Modal = ({
             <option value="Other">Other</option>
           </select>
         </div>
-        <input type="submit" value={editExpense.name ? "Save Changes" : "Add Expense"} />
+        <input
+          type="submit"
+          value={editExpense.name ? "Save Changes" : "Add Expense"}
+        />
       </form>
     </div>
   );
