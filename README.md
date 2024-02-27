@@ -1,6 +1,6 @@
 # Budget Manager React Project
 
-Welcome to the Budget Manager project! This application helps you manage your budget effectively. It's built using React and powered by Vite for a fast development experience.
+Welcome to the Budget Manager project! This application helps you manage your budget effectively. It's built using React and powered by Vite for a fast development experience. This project is part of Udemy's Course: **Aprende React: Hooks, State, MERN, Next.js, Remix Run, Redux, Tailwind CSS, Prisma.** by Juan Pablo De la Torre Valdez
 
 ## Features
 
