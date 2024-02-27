@@ -1,10 +1,21 @@
-import {useEffect} from "react";
+import {useState, useEffect} from "react";
 import PropTypes from "prop-types";
 
 const BudgetControl = ({expenses, budget}) => {
 
+  const [available, setAvailable] = useState(0);
+  const [spent, setSpent] = useState(0);
+
   useEffect(() => {
-    console.log(expenses);
+    const totalSpent = expenses.reduce(
+      (total, expense) => total + expense.quantity,
+      0
+    );
+    
+    const totalAvailable = budget - totalSpent;
+
+    setAvailable(totalAvailable);
+    setSpent(totalSpent);
   }, [expenses]);
 
   const formatQuantity = (quantity) => {
@@ -24,10 +35,10 @@ const BudgetControl = ({expenses, budget}) => {
           <span>Budget: </span> {formatQuantity(budget)}
         </p>
         <p>
-          <span>Available: </span> {formatQuantity(0)}
+          <span>Available: </span> {formatQuantity(available)}
         </p>
         <p>
-          <span>Spent: </span> {formatQuantity(0)}
+          <span>Spent: </span> {formatQuantity(spent)}
         </p>
       </div>
     </div>
