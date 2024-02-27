@@ -16,6 +16,5 @@ export const modalPropTypes = {
 };
 
 export const expensesPropTypes = {
-  expensesPropTypes: PropTypes.array.isRequired,
   expenses: PropTypes.array.isRequired,
 };

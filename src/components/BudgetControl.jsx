@@ -1,6 +1,11 @@
-import { budgetPropTypes } from "../utils/propTypes";
+import {useEffect} from "react";
+import PropTypes from "prop-types";
 
-const BudgetControl = ({ budget, setBudget }) => {
+const BudgetControl = ({expenses, budget}) => {
+
+  useEffect(() => {
+    console.log(expenses);
+  }, [expenses]);
 
   const formatQuantity = (quantity) => {
     return quantity.toLocaleString("en-US", {
@@ -29,6 +34,9 @@ const BudgetControl = ({ budget, setBudget }) => {
   );
 };
 
-BudgetControl.propTypes = budgetPropTypes;
+BudgetControl.propTypes = {
+  budget: PropTypes.number.isRequired,
+  expenses: PropTypes.array.isRequired,
+};
 
 export default BudgetControl;

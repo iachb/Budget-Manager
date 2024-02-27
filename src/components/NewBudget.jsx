@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { budgetPropTypes } from "../utils/propTypes";
+import PropTypes from "prop-types";
 import Message from "./Message";
 
 const NewBudget = ({ budget, setBudget, setIsValidBudget }) => {
@@ -35,6 +35,10 @@ const NewBudget = ({ budget, setBudget, setIsValidBudget }) => {
   );
 };
 
-NewBudget.propTypes = budgetPropTypes;
+NewBudget.propTypes = {
+  budget: PropTypes.number.isRequired,
+  setBudget: PropTypes.func.isRequired,
+  setIsValidBudget: PropTypes.func.isRequired,
+};
 
 export default NewBudget;

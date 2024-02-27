@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { modalPropTypes } from "../utils/propTypes";
+import PropTypes from "prop-types";
 import Message from "./Message";
 import CloseBtn from "../img/cerrar.svg";
 
@@ -82,6 +82,11 @@ const Modal = ({ setModal, animateModal, setAnimateModal, saveExpense }) => {
   );
 };
 
-Modal.propTypes = modalPropTypes;
+Modal.propTypes = {
+  setModal: PropTypes.func.isRequired,
+  animateModal: PropTypes.bool.isRequired,
+  setAnimateModal: PropTypes.func.isRequired,
+  saveExpense: PropTypes.func.isRequired,
+};
 
 export default Modal;

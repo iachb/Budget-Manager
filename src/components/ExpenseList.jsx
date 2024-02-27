@@ -1,4 +1,4 @@
-import { expensesPropTypes } from "../utils/propTypes";
+import PropTypes from "prop-types";
 import Expense from "./Expense";
 
 const ExpenseList = ({ expenses }) => {
@@ -14,6 +14,8 @@ const ExpenseList = ({ expenses }) => {
   );
 };
 
-ExpenseList.propTypes = expensesPropTypes;
+ExpenseList.propTypes = {
+  expenses: PropTypes.array.isRequired,
+};
 
 export default ExpenseList;

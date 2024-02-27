@@ -1,4 +1,4 @@
-import { expensesPropTypes } from "../utils/propTypes";
+import PropTypes from "prop-types";
 import { formatDate } from "../utils";
 import savingsIcon from "../img/icono_ahorro.svg";
 import homeIcon from "../img/icono_casa.svg";
@@ -38,6 +38,8 @@ const Expense = ({ expense }) => {
   );
 };
 
-Expense.propTypes = expensesPropTypes;
+Expense.propTypes = {
+  expense: PropTypes.object.isRequired,
+};
 
 export default Expense;
