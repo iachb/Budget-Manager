@@ -28,9 +28,24 @@ const iconDiccionary = {
 
 const Expense = ({ expense }) => {
   const { category, name, date, quantity } = expense;
+
+  const leadingActions = () => (
+    <LeadingActions>
+      <SwipeAction onClick={() => console.log("edit")}>Edit</SwipeAction>
+    </LeadingActions>
+  );
+
+  const trailingActions = () => (
+    <TrailingActions>
+      <SwipeAction onClick={() => console.log("delete")}>Delete</SwipeAction>
+    </TrailingActions>
+  );
   return (
     <SwipeableList>
-      <SwipeableListItem>
+      <SwipeableListItem
+        leadingActions={leadingActions()}
+        trailingActions={trailingActions()}
+      >
         <div className="gasto sombra">
           <div className="contenido-gasto">
             <img src={iconDiccionary[category]} alt="icon" />
