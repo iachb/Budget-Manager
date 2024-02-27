@@ -1,8 +1,40 @@
-# React + Vite
+# Budget Manager React Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the Budget Manager project! This application helps you manage your budget effectively. It's built using React and powered by Vite for a fast development experience.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Expense Tracking:** Keep track of your expenses and income.
+- **Budget Visualization:** Visualize your budget with clear charts and graphs.
+- **Categories:** Categorize your expenses for better organization.
+- **Responsive Design:** Enjoy a seamless experience across various devices.
+
+## Technologies Used
+
+- **React:** A JavaScript library for building user interfaces.
+- **Vite:** A fast build tool for modern web development.
+- **Chart.js:** For creating interactive charts and graphs.
+- **React Router:** For managing routing within the application.
+- **Styled Components:** For styling components with scoped styles.
+- **LocalStorage:** For storing data locally in the browser.
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/iachb/Budget-Manager.git
+```
+2. Navigate to the project
+```bash
+cd budget-control
+```
+3. Install dependencies
+```bash
+npm install
+```
+4. Start the development server
+```bash
+npm run dev
+```
+5. Open your browser and visit http://localhost:5173/ to view the application.
