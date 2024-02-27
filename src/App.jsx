@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import IconNewExpense from "./img/nuevo-gasto.svg";
 import Modal from "./components/Modal";
@@ -12,20 +12,37 @@ function App() {
   const [modal, setModal] = useState(false);
   const [animateModal, setAnimateModal] = useState(false);
   const [expenses, setExpenses] = useState([]);
+  const [editExpense, setEditExpense] = useState({});
+
+  useEffect(() => {
+    if (Object.keys(editExpense).length > 0) {
+      setModal(true);
+      setTimeout(() => {
+        setAnimateModal(true);
+      }, 500);
+    }
+  }, [editExpense]);
 
   const handleNewExpense = () => {
     setModal(true);
+    setEditExpense({});
     setTimeout(() => {
       setAnimateModal(true);
     }, 500);
   };
 
   const saveExpense = (expense) => {
-    expense.id = generateId();
-    expense.date = Date.now();
+    if (expense.id) {
+      const updatedExpenses = expenses.map((expenseState) =>
+        expenseState.id === expense.id ? expense : expenseState
+      );
+      setExpenses(updatedExpenses);
+    } else {
+      expense.id = generateId();
+      expense.date = Date.now();
 
-    setExpenses([...expenses, expense]);
-
+      setExpenses([...expenses, expense]);
+    }
     setAnimateModal(false);
     setTimeout(() => {
       setModal(false);
@@ -33,7 +50,7 @@ function App() {
   };
 
   return (
-    <div className={modal ? "fijar" : ''}>
+    <div className={modal ? "fijar" : ""}>
       <Header
         expenses={expenses}
         budget={budget}
@@ -44,7 +61,7 @@ function App() {
       {isValidBudget && (
         <>
           <main>
-            <ExpenseList expenses={expenses} />
+            <ExpenseList expenses={expenses} setEditExpense={setEditExpense} />
           </main>
           <div className="nuevo-gasto">
             <img
@@ -61,6 +78,7 @@ function App() {
           animateModal={animateModal}
           setAnimateModal={setAnimateModal}
           saveExpense={saveExpense}
+          editExpense={editExpense}
         />
       )}
     </div>

@@ -1,13 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Message from "./Message";
 import CloseBtn from "../img/cerrar.svg";
 
-const Modal = ({ setModal, animateModal, setAnimateModal, saveExpense }) => {
+const Modal = ({
+  setModal,
+  animateModal,
+  setAnimateModal,
+  saveExpense,
+  editExpense,
+}) => {
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState("");
   const [category, setCategory] = useState("");
   const [message, setMessage] = useState("");
+  const [id, setId] = useState('');
+
+  useEffect(() => {
+    if (Object.keys(editExpense).length > 0) {
+      setName(editExpense.name);
+      setQuantity(editExpense.quantity);
+      setCategory(editExpense.category);
+      setId(editExpense.id);
+    }
+  }, []);
 
   const hideModal = () => {
     setAnimateModal(false);
@@ -25,7 +41,7 @@ const Modal = ({ setModal, animateModal, setAnimateModal, saveExpense }) => {
       }, 3000);
       return;
     }
-    saveExpense({ name, quantity, category });
+    saveExpense({ name, quantity, category, id });
   };
 
   return (
@@ -37,7 +53,7 @@ const Modal = ({ setModal, animateModal, setAnimateModal, saveExpense }) => {
         onSubmit={handleSubmit}
         className={`formulario ${animateModal ? "animar" : "cerrar"}`}
       >
-        <legend>New Expense</legend>
+        <legend>{editExpense.name ? "Edit Expense" : "New Expense"} </legend>
         {message && <Message type="error">{message}</Message>}
         <div className="campo">
           <label htmlFor="Name">Name</label>
@@ -76,7 +92,7 @@ const Modal = ({ setModal, animateModal, setAnimateModal, saveExpense }) => {
             <option value="Other">Other</option>
           </select>
         </div>
-        <input type="submit" value="Add Expense" />
+        <input type="submit" value={editExpense.name ? "Save Changes" : "Add Expense"} />
       </form>
     </div>
   );
@@ -87,6 +103,7 @@ Modal.propTypes = {
   animateModal: PropTypes.bool.isRequired,
   setAnimateModal: PropTypes.func.isRequired,
   saveExpense: PropTypes.func.isRequired,
+  editExpense: PropTypes.object,
 };
 
 export default Modal;

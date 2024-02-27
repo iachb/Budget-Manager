@@ -11,27 +11,27 @@ import { formatDate } from "../utils";
 import savingsIcon from "../img/icono_ahorro.svg";
 import homeIcon from "../img/icono_casa.svg";
 import foodIcon from "../img/icono_comida.svg";
-import expensesIcon from "../img/icono_gastos.svg";
+import otherIcon from "../img/icono_gastos.svg";
 import leisureIcon from "../img/icono_ocio.svg";
 import healthIcon from "../img/icono_salud.svg";
-import subscriptionsIcon from "../img/icono_suscripciones.svg";
+import subscriptionIcon from "../img/icono_suscripciones.svg";
 
 const iconDiccionary = {
   Savings: savingsIcon,
   Home: homeIcon,
   Food: foodIcon,
-  Expenses: expensesIcon,
+  Other: otherIcon,
   Leisure: leisureIcon,
   Health: healthIcon,
-  Subscriptions: subscriptionsIcon,
+  Subscription: subscriptionIcon,
 };
 
-const Expense = ({ expense }) => {
+const Expense = ({ expense, setEditExpense }) => {
   const { category, name, date, quantity } = expense;
 
   const leadingActions = () => (
     <LeadingActions>
-      <SwipeAction onClick={() => console.log("edit")}>Edit</SwipeAction>
+      <SwipeAction onClick={() => setEditExpense(expense)}>Edit</SwipeAction>
     </LeadingActions>
   );
 
@@ -67,6 +67,7 @@ const Expense = ({ expense }) => {
 
 Expense.propTypes = {
   expense: PropTypes.object.isRequired,
+  setEditExpense: PropTypes.func.isRequired,
 };
 
 export default Expense;
