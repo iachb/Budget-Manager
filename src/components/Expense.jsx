@@ -26,8 +26,8 @@ const iconDiccionary = {
   Subscription: subscriptionIcon,
 };
 
-const Expense = ({ expense, setEditExpense }) => {
-  const { category, name, date, quantity } = expense;
+const Expense = ({ expense, setEditExpense, deleteExpense }) => {
+  const { category, name, date, quantity, id } = expense;
 
   const leadingActions = () => (
     <LeadingActions>
@@ -37,7 +37,9 @@ const Expense = ({ expense, setEditExpense }) => {
 
   const trailingActions = () => (
     <TrailingActions>
-      <SwipeAction onClick={() => console.log("delete")}>Delete</SwipeAction>
+      <SwipeAction onClick={() => deleteExpense(id)} destructive={true}>
+        Delete
+      </SwipeAction>
     </TrailingActions>
   );
   return (
@@ -68,6 +70,7 @@ const Expense = ({ expense, setEditExpense }) => {
 Expense.propTypes = {
   expense: PropTypes.object.isRequired,
   setEditExpense: PropTypes.func.isRequired,
+  deleteExpense: PropTypes.func.isRequired,
 };
 
 export default Expense;

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import Expense from "./Expense";
 
-const ExpenseList = ({ expenses, setEditExpense }) => {
+const ExpenseList = ({ expenses, setEditExpense, deleteExpense }) => {
   return (
     <>
       <div className="listado-gastos contenedor">
@@ -11,6 +11,7 @@ const ExpenseList = ({ expenses, setEditExpense }) => {
             key={expense.id}
             expense={expense}
             setEditExpense={setEditExpense}
+            deleteExpense={deleteExpense}
           />
         ))}
       </div>
@@ -21,6 +22,7 @@ const ExpenseList = ({ expenses, setEditExpense }) => {
 ExpenseList.propTypes = {
   expenses: PropTypes.array.isRequired,
   setEditExpense: PropTypes.func.isRequired,
+  deleteExpense: PropTypes.func.isRequired,
 };
 
 export default ExpenseList;

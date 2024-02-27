@@ -37,6 +37,7 @@ function App() {
         expenseState.id === expense.id ? expense : expenseState
       );
       setExpenses(updatedExpenses);
+      setEditExpense({});
     } else {
       expense.id = generateId();
       expense.date = Date.now();
@@ -47,6 +48,11 @@ function App() {
     setTimeout(() => {
       setModal(false);
     }, 500);
+  };
+
+  const deleteExpense = (id) => {
+    const updatedExpenses = expenses.filter((expense) => expense.id !== id);
+    setExpenses(updatedExpenses);
   };
 
   return (
@@ -61,7 +67,11 @@ function App() {
       {isValidBudget && (
         <>
           <main>
-            <ExpenseList expenses={expenses} setEditExpense={setEditExpense} />
+            <ExpenseList
+              expenses={expenses}
+              setEditExpense={setEditExpense}
+              deleteExpense={deleteExpense}
+            />
           </main>
           <div className="nuevo-gasto">
             <img
@@ -79,6 +89,7 @@ function App() {
           setAnimateModal={setAnimateModal}
           saveExpense={saveExpense}
           editExpense={editExpense}
+          setEditExpense={setEditExpense}
         />
       )}
     </div>
