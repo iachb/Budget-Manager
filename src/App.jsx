@@ -33,7 +33,7 @@ function App() {
   };
 
   return (
-    <>
+    <div className={modal && 'fijar'}>
       <Header
         budget={budget}
         setBudget={setBudget}
@@ -62,7 +62,7 @@ function App() {
           saveExpense={saveExpense}
         />
       )}
-    </>
+    </div>
   );
 }
 
