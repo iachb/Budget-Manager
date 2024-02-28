@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import IconNewExpense from "./img/nuevo-gasto.svg";
 import Modal from "./components/Modal";
 import ExpenseList from "./components/ExpenseList";
+import Filters from "./components/Filters";
 
 import { generateId } from "./utils";
 
@@ -19,6 +20,8 @@ function App() {
       : []
   );
   const [editExpense, setEditExpense] = useState({});
+  const [filter, setFilter] = useState("");
+  const [filteredExpenses, setFilteredExpenses] = useState("");
 
   useEffect(() => {
     if (Object.keys(editExpense).length > 0) {
@@ -36,6 +39,14 @@ function App() {
   useEffect(() => {
     localStorage.setItem("expenses", JSON.stringify(expenses) ?? []);
   }, [expenses]);
+
+  useEffect(() => {
+    if(filter){
+      const filteredExpenses = expenses.filter(expense => expense.category === filter);
+      setFilteredExpenses(filteredExpenses);
+    }
+  }
+  , [filter]);
 
   useEffect(() => {
     const budgetLS = localStorage.getItem("budget");
@@ -88,6 +99,7 @@ function App() {
       {isValidBudget && (
         <>
           <main>
+            <Filters filter={filter} setFilter={setFilter} />
             <ExpenseList
               expenses={expenses}
               setEditExpense={setEditExpense}
