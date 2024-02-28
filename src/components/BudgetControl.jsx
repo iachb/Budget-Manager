@@ -43,7 +43,7 @@ const BudgetControl = ({ expenses, budget }) => {
             textColor: percentage > 100 ? "#DC2626" : "#3B82F6",
           })}
           value={percentage}
-          text={`${percentage}% Gastado`}
+          text={`${percentage}% Spent`}
         />
       </div>
       <div className="contenido-presupuesto">

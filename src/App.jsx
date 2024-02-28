@@ -7,11 +7,17 @@ import ExpenseList from "./components/ExpenseList";
 import { generateId } from "./utils";
 
 function App() {
-  const [budget, setBudget] = useState(0);
+  const [budget, setBudget] = useState(
+    JSON.parse(localStorage.getItem("budget")) ?? 0
+  );
   const [isValidBudget, setIsValidBudget] = useState(false);
   const [modal, setModal] = useState(false);
   const [animateModal, setAnimateModal] = useState(false);
-  const [expenses, setExpenses] = useState([]);
+  const [expenses, setExpenses] = useState(
+    localStorage.getItem("expenses")
+      ? JSON.parse(localStorage.getItem("expenses"))
+      : []
+  );
   const [editExpense, setEditExpense] = useState({});
 
   useEffect(() => {
@@ -22,6 +28,21 @@ function App() {
       }, 500);
     }
   }, [editExpense]);
+
+  useEffect(() => {
+    localStorage.setItem("budget", budget ?? 0);
+  }, [budget]);
+
+  useEffect(() => {
+    localStorage.setItem("expenses", JSON.stringify(expenses) ?? []);
+  }, [expenses]);
+
+  useEffect(() => {
+    const budgetLS = localStorage.getItem("budget");
+    if (budgetLS > 0) {
+      setIsValidBudget(true);
+    }
+  }, []);
 
   const handleNewExpense = () => {
     setModal(true);
