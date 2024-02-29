@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 const Filters = ({ filter, setFilter }) => {
@@ -8,7 +7,7 @@ const Filters = ({ filter, setFilter }) => {
         <div className="campo">
           <label>Filter Expenses</label>
           <select value={filter} onChange={(e) => setFilter(e.target.value)}>
-            <option value="">-- Select one --</option>
+            <option value="">-- All Categories --</option>
             <option value="Savings">Savings</option>
             <option value="Food">Food</option>
             <option value="Home">Home</option>

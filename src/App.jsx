@@ -21,7 +21,7 @@ function App() {
   );
   const [editExpense, setEditExpense] = useState({});
   const [filter, setFilter] = useState("");
-  const [filteredExpenses, setFilteredExpenses] = useState("");
+  const [filteredExpenses, setFilteredExpenses] = useState([]);
 
   useEffect(() => {
     if (Object.keys(editExpense).length > 0) {
@@ -104,6 +104,8 @@ function App() {
               expenses={expenses}
               setEditExpense={setEditExpense}
               deleteExpense={deleteExpense}
+              filter={filter}
+              filteredExpenses={filteredExpenses}
             />
           </main>
           <div className="nuevo-gasto">
