@@ -14,7 +14,6 @@ Welcome to the Budget Manager project! This application helps you manage your bu
 - **React:** A JavaScript library for building user interfaces.
 - **Vite:** A fast build tool for modern web development.
 - **Chart.js:** For creating interactive charts and graphs.
-- **React Router:** For managing routing within the application.
 - **Styled Components:** For styling components with scoped styles.
 - **LocalStorage:** For storing data locally in the browser.
 
