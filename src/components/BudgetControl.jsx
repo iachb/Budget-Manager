@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-const BudgetControl = ({ expenses, budget }) => {
+const BudgetControl = ({ expenses, setExpenses, budget, setBudget, setIsValidBudget }) => {
   const [percentage, setPercentage] = useState(10);
   const [available, setAvailable] = useState(0);
   const [spent, setSpent] = useState(0);
@@ -26,6 +26,16 @@ const BudgetControl = ({ expenses, budget }) => {
     }, 1500);
   }, [expenses]);
 
+  const handleResetApp = () => {
+    const result = confirm("Are you sure you want to reset the app?");
+
+    if (result) {
+      setBudget(0);
+      setExpenses([]);
+      setIsValidBudget(false);
+    }
+  };
+
   const formatQuantity = (quantity) => {
     return quantity.toLocaleString("en-US", {
       style: "currency",
@@ -47,6 +57,13 @@ const BudgetControl = ({ expenses, budget }) => {
         />
       </div>
       <div className="contenido-presupuesto">
+        <button
+          className="reset-app"
+          type="button"
+          onClick={handleResetApp}
+        >
+          Reset
+        </button>
         <p>
           <span>Budget: </span> {formatQuantity(budget)}
         </p>
@@ -63,7 +80,10 @@ const BudgetControl = ({ expenses, budget }) => {
 
 BudgetControl.propTypes = {
   budget: PropTypes.number.isRequired,
+  setBudget: PropTypes.func.isRequired,
+  setIsValidBudget: PropTypes.func.isRequired,
   expenses: PropTypes.array.isRequired,
+  setExpenses: PropTypes.func.isRequired,
 };
 
 export default BudgetControl;

@@ -4,6 +4,7 @@ import BudgetControl from "./BudgetControl";
 
 const Header = ({
   expenses,
+  setExpenses,
   budget,
   setBudget,
   isValidBudget,
@@ -13,7 +14,13 @@ const Header = ({
     <header>
       <h1>Budget Manager</h1>
       {isValidBudget ? (
-        <BudgetControl expenses={expenses} budget={budget} />
+        <BudgetControl
+          expenses={expenses}
+          setExpenses={setExpenses}
+          budget={budget}
+          setBudget={setBudget}
+          setIsValidBudget={setIsValidBudget}
+        />
       ) : (
         <NewBudget
           budget={budget}
@@ -27,6 +34,7 @@ const Header = ({
 
 Header.propTypes = {
   expenses: PropTypes.array.isRequired,
+  setExpenses: PropTypes.func.isRequired,
   budget: PropTypes.number.isRequired,
   setBudget: PropTypes.func.isRequired,
   isValidBudget: PropTypes.bool.isRequired,
