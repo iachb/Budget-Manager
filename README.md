@@ -14,7 +14,6 @@ Welcome to the Budget Manager project! This application helps you manage your bu
 - **React:** A JavaScript library for building user interfaces.
 - **Vite:** A fast build tool for modern web development.
 - **Chart.js:** For creating interactive charts and graphs.
-- **Styled Components:** For styling components with scoped styles.
 - **LocalStorage:** For storing data locally in the browser.
 
 ## Installation
@@ -37,3 +36,6 @@ npm install
 npm run dev
 ```
 5. Open your browser and visit http://localhost:5173/ to view the application.
+
+## Preview App 
+[Click here to preview the application](https://manager-budget.netlify.app/)
