@@ -2,6 +2,9 @@
 
 Welcome to the Budget Manager project! This application helps you manage your budget effectively. It's built using React and powered by Vite for a fast development experience. This project is part of Udemy's Course: **Aprende React: Hooks, State, MERN, Next.js, Remix Run, Redux, Tailwind CSS, Prisma.** by Juan Pablo De la Torre Valdez
 
+## Preview App 
+[Click here to preview the application](https://manager-budget.netlify.app/)
+
 ## Features
 
 - **Expense Tracking:** Keep track of your expenses and income.
@@ -36,6 +39,3 @@ npm install
 npm run dev
 ```
 5. Open your browser and visit http://localhost:5173/ to view the application.
-
-## Preview App 
-[Click here to preview the application](https://manager-budget.netlify.app/)
